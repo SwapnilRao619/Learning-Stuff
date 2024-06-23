@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grid Practice</title>
+  </head>
+  <body>
+    <div style="display: grid; grid-template-columns: 100px 100px;">
+      <div style="background-color: aqua;">
+        div1 
+      </div>
+      <div style="background-color: pink;">
+        div2 <p>text</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 100px 100px 200px; margin-top: 30px;"> <!--1fr means free space-->
+      <div style="background-color: aqua;">
+        100px
+      </div>
+      <div style="background-color: pink;">
+        100px <p>text</p>
+      </div>
+      <div style="background-color:red;">
+        200px
+      </div>
+      <div style="background-color:purple;">
+        100px
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 100px 1fr; margin-top: 30px;"> <!--1fr means free space-->
+      <div style="background-color: aqua;">
+        100px
+      </div>
+      <div style="background-color: pink;">
+        1fr
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 100px 1fr 2fr; margin-top: 30px;"> <!--1fr means free space-->
+      <div style="background-color: aqua;">
+        100px
+      </div>
+      <div style="background-color: pink;">
+        1fr
+      </div>
+      <div style="background-color: red;">
+        2fr
+      </div>
+    </div>
+  </body>
+</html>

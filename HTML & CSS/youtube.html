@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <title>YouTube.com</title>
+        <style>
+            p{
+                font-family: Roboto, Arial; /*Font stack, second one is a backup*/
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            body{
+                margin:0;
+                background-color: rgb(248,248,248);
+            }
+            .thumbnail{ 
+                width: 100%;
+                /* width: 300px;
+                height:300px;
+                border-width: 2px;
+                border-color: red;
+                border-style: solid;
+                object-fit: contain; cover
+                object-position: center; left right */
+            }
+            .search{
+                flex:1;
+                height: 34px;
+                padding-left:10px;
+                font-size: 16px;
+                border-style: solid;
+                border-width: 1px;
+                border-color: rgb(192,192,192); /*Or, what's below, as a border shorthand*/
+                border: 1px solid rgb(192,192,192);
+                box-shadow: inset 1px 2px 2px rgba(0,0,0,0.05);
+                width:0; /*Shrinks as much as possible*/
+
+            }
+            .search::placeholder{
+                font-family: Roboto,Arial;
+                font-size: 16px;
+            }
+            .vidt{
+                margin-top: 0;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 15px;
+                margin-bottom: 10px;
+            }
+            .vidp{
+                width:100%;  
+                /* display: inline-block;
+                vertical-align: top;
+                margin-right:15px; */
+            }
+            .pfp{
+                width: 100%; /*Space assigned to the container*/
+                border-radius: 20px;
+                height: 36px;
+                width: 36px;
+            }
+            .tr{
+                margin-bottom: 8px;
+                position: relative;
+            }
+            .vida,.vidd{
+                font-size: 12px;
+                color: rgb(96,96,96);
+            }
+            .vida{
+                margin-bottom: 4px;
+            }
+            .vidg{
+                display: grid;
+                grid-template-columns: 50px 1fr;
+            }
+            .vid-grid{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                column-gap: 16px;
+                row-gap:40px;
+            }
+
+            @media(max-width:750px){
+                .vid-grid{
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+            @media(min-width:751px) and (max-width:999px){
+                .vid-grid{
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }
+            @media(min-width:1000px){
+                .vid-grid{
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                }
+            }
+
+            .header{
+                position: fixed;
+                top:0;
+                left: 0;
+                right:0;
+                background-color: white;
+                height: 55px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border-bottom-width:1px;
+                border-bottom-style: solid;
+                border-bottom-color: rgb(228,228,228);
+                z-index: 100; /*Header will be above everything from 0 to 99*/
+            }
+            .lefts{
+                display: flex; /*Nested flexbox*/
+                align-items: center;
+                margin-left: -2px;
+            }
+            .mids{
+                display: flex;
+                flex:1;
+                margin-right: 70px;
+                margin-left: 35px;
+                max-width: 500px;
+                align-items: center;
+                flex-direction: row;
+            }
+            .rights{
+                width: 180px;
+                margin-right: 20px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                flex-shrink: 0; /*Avoids it from shrinking*/
+            }
+            .ham{
+                height: 24px;
+                margin-left: 24px;
+                margin-right: 24px;
+            }
+            .yt{
+                height: 20px;
+            }
+            .upload{
+                height: 24px;
+            }
+            .ytapps{
+                height: 24px;
+            }
+            .notifs{
+                height: 24px;
+            }
+            .ytacc{
+                height: 32px;
+                border-radius: 16px;
+            }
+            .vidtime{
+                background-color: black;
+                color: white;
+                position: absolute;
+                bottom: 8px;
+                right: 5px;
+                font-family: Roboto,Arial;
+                font-size: 12px;
+                font-weight: 500;
+                padding: 4px; /*Equivalent to padding-lrtb:4px (padding shorthand) and same can be done with margin*/
+                border-radius:2px;
+            }
+            .notificon{
+                position: relative;
+            }
+            .notifcount{
+                position: absolute;
+                top:-2px;
+                right: -5px;
+                background-color: rgb(200, 0, 0);
+                color: white;
+                font-family: Roboto,Arial;
+                font-size: 11px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                border-radius: 10px;
+            }
+            .sl{
+                height: 74px;
+                display: flex;
+                flex-direction: column; /*Image and the descr. on top of each other, not side-by-side*/
+                justify-content: center;
+                align-items: center;
+            }
+            .sl:hover{
+                background-color: rgb(235, 235, 235);
+                cursor:pointer;
+            }
+            .sidebarimg{
+                height: 24px;
+                width: 24px;
+                margin-bottom: 4px;
+            }
+            .sl div{ /*Selecting a div inside class 'sl'*/ 
+                font-family: Roboto,Arial;
+                font-size:10px;
+            }
+            .tt,.upt,.yat,.notift{
+                position: absolute;
+                background-color: gray;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                color: white;
+                border-radius: 2px;
+                font-size: 12px;
+                font-family: Roboto,Arial;
+                bottom: -30px;
+                opacity: 0;
+                transition: opacity 0.15s;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none; /*Never allows random pointer clicks to trigger this*/
+                white-space: nowrap; /*Single line wrap instead of breaking into the next line.*/
+            }
+            .sb:hover .tt, .utt:hover .upt, .ytappstt:hover .yat, .notiftt:hover .notift{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 1;
+            }
+
+            @media(min-width:1200px){
+                .sidebar{
+                    width: 144px;
+                }
+                body{
+                    padding-left: 192px;
+                    padding-right:24px;
+                    padding-top: 80px;
+                }
+            }
+            @media(max-width:1200px){
+                .sidebar{
+                    width: 72px;
+                }
+                body{
+                    padding-left: 96px;
+                    padding-right:24px;
+                    padding-top: 80px;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="lefts">
+                <img class="ham" src="https://supersimple.dev/public/img/exercises/youtube/icons/hamburger-menu.svg">
+                <img class="yt" src="https://supersimple.dev/public/img/exercises/youtube/icons/youtube-logo.svg">
+            </div>
+            <div class="mids">
+                <input class="search" type="text" placeholder="Search">
+                <button class="sb" style="background-color: rgb(240,240,240); border-width: 1px; border-style: solid; border-color: rgb(192,192,192); margin-left: -1px; margin-right: 8px; height: 37px;position: relative;"><img style="height: 25px; width:47px;" src="https://supersimple.dev/public/img/exercises/youtube/icons/search.svg"><div class="tt">Search</div></button>
+                <button class="sb" style="background-color: rgb(248,248,248); border:none;height: 40px; width: 40px; border-radius: 20px;"><img style="height: 24px; position: relative;" src="https://supersimple.dev/public/img/exercises/youtube/icons/voice-search-icon.svg"><div class="tt">Search with your voice</div></button>
+            </div>
+            <div class="rights">
+                <div class="utt">
+                    <img class="upload" src="https://supersimple.dev/public/img/exercises/youtube/icons/upload.svg" style="position: relative;"><div class="upt">Upload</div>
+                </div>
+                <div class="ytappstt">
+                    <img class="ytapps" src="https://supersimple.dev/public/img/exercises/youtube/icons/youtube-apps.svg" style="position: relative;"><div class="yat">YouTube apps</div>
+                </div>
+                <div class="notificon">
+                    <div class="notiftt">
+                        <img class="notifs" src="https://supersimple.dev/public/img/exercises/youtube/icons/notifications.svg" style="position: relative;"><div class="notift">Notifications</div>
+                        <div class="notifcount">3</div>
+                    </div>
+                </div>
+                <img class="ytacc" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/my-channel.jpeg">
+            </div>
+        </div>
+        <div class="sidebar" style="background-color:white;position: fixed; left: 0; bottom: 0; top:55px;z-index: 200;padding-top: 5px;">
+            <div class="sl"><img class="sidebarimg" src="https://supersimple.dev/public/img/exercises/youtube/icons/home.svg"><div>Home</div></div>
+            <div class="sl"><img class="sidebarimg" src="https://supersimple.dev/public/img/exercises/youtube/icons/explore.svg"><div>Explore</div></div>
+            <div class="sl"><img class="sidebarimg" src="https://supersimple.dev/public/img/exercises/youtube/icons/subscriptions.svg"><div>Subscriptions</div></div>
+            <div class="sl"><img class="sidebarimg" src="https://supersimple.dev/public/img/exercises/youtube/icons/originals.svg"><div>Originals</div></div>
+            <div class="sl"><img class="sidebarimg" src="https://supersimple.dev/public/img/exercises/youtube/icons/youtube-music.svg"><div>Youtube Music</div></div>
+            <div class="sl"><img class="sidebarimg" src="https://supersimple.dev/public/img/exercises/youtube/icons/library.svg"><div>Library</div></div>
+        </div>
+        <div class="vid-grid">
+            <div class="vidp">
+                <div class="tr">
+                    <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-1.webp"> <!--Void tag as no closing tag needed-->
+                    <div class="vidtime">14:20</div>
+                </div>
+                <div class="vidg">
+                    <div class="cp">
+                        <img class="pfp" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-1.jpeg">
+                    </div>
+                    <div class="ci">
+                        <p class="vidt">Talking Tech and AI with Google CEO Sundar Pichai!</p>
+                        <p class="vida">Marques Brownlee</p>
+                        <p class="vidd">3.4M views &#183; 6 months ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vidp">
+                <div class="tr">
+                    <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-2.webp"> <!--Void tag as no closing tag needed-->
+                    <div class="vidtime">8:22</div>
+                </div>
+                <div class="vidg">
+                    <div class="cp">
+                        <img class="pfp" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-2.jpeg">
+                    </div>
+                    <div class="ci">
+                        <p class="vidt">Try Not To Laugh Challenge #9</p>
+                        <p class="vida">Markiplier</p>
+                        <p class="vidd">19M views &#183; 4 years ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vidp">
+                <div class="tr">
+                    <div class="vidtime">9:13</div>
+                    <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-3.webp"> <!--Void tag as no closing tag needed-->
+                </div>
+                <div class="vidg">
+                    <div class="cp">
+                        <img class="pfp" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-3.jpeg">
+                    </div>
+                    <div class="ci">
+                        <p class="vidt">Crazy Tik Toks Taken Moments Before DISASTER</p>
+                        <p class="vida">SSSniperWolf</p>
+                        <p class="vidd">12M views &#183; 1 year ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vidp">
+                <div class="tr">
+                    <div class="vidtime">22:09</div>
+                    <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-4.webp"> <!--Void tag as no closing tag needed-->
+                </div>
+                <div class="vidg">
+                    <div class="cp">
+                        <img class="pfp" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-4.jpeg">
+                    </div>
+                    <div class="ci">
+                        <p class="vidt">The Simplest Math Problem No One Can Solve - Collatz Conjecture</p>
+                        <p class="vida">Veritasium</p>
+                        <p class="vidd">18M views &#183; 4 months ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vidp">
+                <div class="tr">
+                    <div class="vidtime">11:17</div>
+                    <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-5.webp"> <!--Void tag as no closing tag needed-->
+                </div>
+                <div class="vidg">
+                    <div class="cp">
+                        <img class="pfp" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-5.jpeg">
+                    </div>
+                    <div class="ci">
+                        <p class="vidt">Kadane's Algorithm to Maximum Sum Subarray Problem</p>
+                        <p class="vida">CS Dojo</p>
+                        <p class="vidd">519K views &#183; 5 years ago</p>
+                    </div>
+                </div>
+            </div>
+            <div class="vidp">
+                <div class="tr">
+                    <div class="vidtime">19:59</div>
+                    <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-6.webp"> <!--Void tag as no closing tag needed-->
+                </div>
+                <div class="vidg">
+                    <div class="cp">
+                        <img class="pfp" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-6.jpeg">
+                    </div>
+                    <div class="ci">
+                        <p class="vidt">Anything You Can Fit In The Circle I’ll Pay For</p>
+                        <p class="vida">MrBeast</p>
+                        <p class="vidd">141M views &#183; 1 years ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!--Block element ex:<p></p><div></div>, inline block element ex:<img><input>, inline element ex: <span></span> display: inline-block; block;-->
+<!--Inheritance is a thing in CSS, where applying to the parent div is applied to the sub div. However, not all are transferred. Underline YES but border NO. Helps save time.-->
+<!--<header></header> and <nav></nav> and <main></main> => header, navig, main is same as div except it is easier to read and understand aka 'semantic elements'-->
+
+<!--Skipped the excersises X11.8-->

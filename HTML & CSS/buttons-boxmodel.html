@@ -1,0 +1,87 @@
+<style>
+    .subscribe{ /*CSS selectors, CSS property, CSS value*/
+      background-color: rgb(200, 0, 0); 
+      color: white;
+      border: none;
+      border-radius: 2px;
+      padding-top:10px;
+      padding-bottom: 10px;
+      padding-left:16px;
+      padding-right: 16px; /*         Box model, better than height and width*/
+      cursor: pointer;
+      margin-right:8px; 
+      margin-left: 20px;/*Margin=space around the element*/
+      transition: opacity 0.15s;
+      vertical-align: top; /*         All buttons aligned to the top*/
+    }
+    .subscribe:hover{ /*Pseudo-class*/
+      opacity: 0.8;
+    }
+    .subscribe:active{ /*When we click on it*/
+      opacity: 0.4;
+    }
+    .join{
+      background-color: white;
+      border-color: rgb(41, 118, 211);
+      border-style: solid;
+      border-width: 1px;
+      color: rgb(41, 118, 211);
+      padding-top:9px;
+      padding-bottom: 9px;
+      padding-left:16px;
+      padding-right: 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.15s, color 0.15s; /*Putting this under hover is an issue as it is only while hovering*/
+      vertical-align: top;
+    }
+    .join:hover{
+      background-color:rgb(41, 118, 211);
+      color: white;
+    }
+    .join:active{
+      opacity: 0.7;
+    }
+    .tweet{
+      background-color:rgb(2, 158, 255);
+      color:white;
+      border:none;
+      padding-top:10px;
+      padding-bottom: 8px;
+      padding-left:16px;
+      padding-right: 16px;
+      border-radius: 18px; /*Set this to half of min(height,width)*/
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: box-shadow 0.15s;
+      vertical-align: top;
+    }
+    .tweet:hover{
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.15); /*a is opacity*/
+    }
+  </style>
+  <button class="subscribe">SUBSCRIBE</button>
+  <button class="join">JOIN</button>
+  <button class="tweet">Tweet</button>
+
+<style>
+.button1{
+  background-color: green;
+  color: white;
+  padding-top:6px;
+  padding-bottom:6px;
+  padding-left:13px;
+  padding-right:13px;
+  border:none;
+  transition: padding-top 0.3s,padding-bottom 0.3s,padding-right 0.3s,padding-left 0.3s;
+}
+.button1:hover{
+  padding-top:25px;
+  padding-bottom:25px;
+  padding-left:30px;
+  padding-right:30px;
+}
+</style>
+<button class="button1">Stretch</button>
