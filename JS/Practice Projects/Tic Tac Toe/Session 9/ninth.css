@@ -1,0 +1,57 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    text-align: center;
+    background-color: brown;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+}
+.game{
+    height: 60vmin;
+    width:60vmin;
+    display: flex;
+    flex-wrap: wrap; /*Makes it 3X3 without having to create 3 different divs again*/
+    gap:2.5vmin;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    background-color: blanchedalmond;
+    height: 18vmin;
+    width: 18vmin;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+    font-size: 18vmin;
+    color:blueviolet;
+    cursor: pointer;
+}
+#reset{
+    width: 200px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    margin-top: -35px;
+    padding: 2rem;
+    border: none;
+    font-size: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(255,255,255,0.3);
+    cursor: pointer;
+}
+.win{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: blue;
+    background-color: aquamarine;
+}
+
+.hide{
+    display: none;
+}
