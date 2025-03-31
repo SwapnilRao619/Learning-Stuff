@@ -1,0 +1,15 @@
+REST API [RULES/STANDARDS]
+HYBRID SERVER
+
+GET /users - List all users [HTML] - done
+GET /api/users - List all the users [JSON] (If mobile) - done
+
+GET /api/users/1 - Get the user with ID 1 - done
+DYNAMIC PATH PARAMETERS
+GET /api/users/:id - Get the user with ID id - done
+
+POST /api/users - Creates a new user - done 
+
+PATCH /api/users/1 - Edit the user with ID 1
+
+DELETE /api/users/1 - Delete the user with ID 1

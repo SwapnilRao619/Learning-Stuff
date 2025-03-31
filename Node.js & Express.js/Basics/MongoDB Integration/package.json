@@ -1,0 +1,15 @@
+{
+  "name": "mongodb-integration",
+  "version": "1.0.0",
+  "main": "mongo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node mongo.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongoose": "^8.6.1"
+  }
+}
